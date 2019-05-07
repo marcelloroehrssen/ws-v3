@@ -595,6 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 654914262}
+  - component: {fileID: 654914263}
   m_Layer: 0
   m_Name: GunPivot
   m_TagString: Untagged
@@ -617,6 +618,18 @@ Transform:
   m_Father: {fileID: 188205316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &654914263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654914261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27bf0f2207c68f4d9599b049a1b0789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1747013898
 GameObject:
   m_ObjectHideFlags: 0
