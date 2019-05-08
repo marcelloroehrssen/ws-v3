@@ -6,6 +6,8 @@ public class Controller : MonoBehaviour
 {
     [Range(1, 10)]
     public float speed = 1f;
+    [Range(1, 600)]
+    public float speedJump = 1f;
 
     // Update is called once per frame
     void Update()
@@ -18,13 +20,13 @@ public class Controller : MonoBehaviour
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            GetComponent<Rigidbody2D>().AddForce(transform.up * speedJump);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
+            transform.Translate(Vector3.down * speedJump * Time.deltaTime);
         }
     }
 }
