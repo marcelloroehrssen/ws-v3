@@ -7,10 +7,14 @@ public class Shooter : MonoBehaviour
     public GameObject projectile;
     [Range(1,50)]
     public float projectileSpeed = 10f;
+    [Range(1,20)]
+    public int maxProjectile = 3;
     
     void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        int currentProjectile = GameObject.FindGameObjectsWithTag("Projectile").Length;
+
+        if (Input.GetMouseButtonDown(0) && currentProjectile < maxProjectile)
         {
             Vector3 rot = transform.rotation.eulerAngles * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(Mathf.Cos(rot.z),  Mathf.Sin(rot.z));
