@@ -9,6 +9,16 @@ public class Controller : MonoBehaviour
     [Range(1, 600)]
     public float speedJump = 1f;
 
+    private bool isGrounded = true;
+    private bool hasJumped = false;
+    private Rigidbody2D rb2d;
+
+
+    private void Start()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -20,13 +30,24 @@ public class Controller : MonoBehaviour
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+
+        if (!isGrounded && rb2d.velocity.y == 0 && hasJumped == false)
         {
-            GetComponent<Rigidbody2D>().AddForce(transform.up * speedJump);
+            isGrounded = true;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
-            transform.Translate(Vector3.down * speedJump * Time.deltaTime);
+            hasJumped = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (hasJumped)
+        {
+            rb2d.AddForce(transform.up * speedJump);
+            hasJumped = false;
+            isGrounded = false;
         }
     }
 }
