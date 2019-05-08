@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PojectileHit : MonoBehaviour
 {
-    private float damage = 1f;
+    public float damage = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
         {
             Destroy(gameObject);
+            if (collision.GetComponent<EnemyStats>() != null)
+            {
+                EnemyStats es = collision.GetComponent<EnemyStats>();
+                es.Damage(damage);
+            }
         }
     }
 }
