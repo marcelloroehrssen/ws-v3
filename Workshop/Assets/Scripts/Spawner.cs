@@ -20,6 +20,10 @@ public class Spawner : MonoBehaviour
 
     void SpawnEnemy()
     {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length != 0)
+        {
+            return;
+        }
         if (spawnCycle % incrementCycle == 0)
         {
             enemyToSpawn++;

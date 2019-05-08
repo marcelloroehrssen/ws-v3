@@ -16,6 +16,9 @@ public class PojectileHit : MonoBehaviour
                 EnemyStats es = collision.GetComponent<EnemyStats>();
                 es.Damage(damage);
             }
+        } else if(collision.tag == "Obstacle")
+        {
+            Destroy(gameObject);
         }
     }
 }
