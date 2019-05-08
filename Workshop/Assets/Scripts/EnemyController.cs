@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
     public float speed = 3f;
 
     [Min(1)]
     public float seekingThreshold = 1f;
+
+    public void Start()
+    {
+        target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+    }
 
     // Update is called once per frame
     void Update()

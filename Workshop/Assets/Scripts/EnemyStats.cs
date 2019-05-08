@@ -10,6 +10,11 @@ public class EnemyStats : MonoBehaviour
 
     public RectTransform healthBar;
 
+    public void Buff(float health)
+    {
+        maxHealth += health;
+    }
+
     public void Damage(float damage)
     {
         health -= damage;
