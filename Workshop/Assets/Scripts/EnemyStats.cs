@@ -17,7 +17,12 @@ public class EnemyStats : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<Animator>().SetTrigger("IsDead");
         }
+    }
+
+    public void IsDead()
+    {
+        Destroy(gameObject);
     }
 }
