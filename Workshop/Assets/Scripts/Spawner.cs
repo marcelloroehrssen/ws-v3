@@ -32,9 +32,9 @@ public class Spawner : MonoBehaviour
             GameObject go = Instantiate(enemy);
             go.transform.position = transform.position;
             if (spawnCycle % buffCycle == 0) {
-                if (go.GetComponent<EnemyStats>() != null)
+                if (go.GetComponent<CharacterStats>() != null)
                 {
-                    go.GetComponent<EnemyStats>().Buff(spawnCycle);
+                    go.GetComponent<CharacterStats>().Buff(spawnCycle);
                 }
             }
         }

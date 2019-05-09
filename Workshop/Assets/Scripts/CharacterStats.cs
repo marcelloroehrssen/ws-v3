@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour
 {
-    private float maxHealth = 10;
+    public float maxHealth = 10;
     private float health = 10;
 
     public RectTransform healthBar;
+    public RectTransform healthBarContainer;
 
     public void Buff(float health)
     {
@@ -18,7 +19,7 @@ public class EnemyStats : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
-        healthBar.sizeDelta = new Vector2(health / maxHealth * 200, 10);
+        healthBar.sizeDelta = new Vector2(health / maxHealth * healthBarContainer.sizeDelta.x, healthBarContainer.sizeDelta.y);
 
         if (health <= 0)
         {
