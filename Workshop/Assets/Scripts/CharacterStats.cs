@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
+
     public float maxHealth = 10;
     private float health = 10;
 
     public RectTransform healthBar;
     public RectTransform healthBarContainer;
+
+    [HideInInspector]
+    public int score = 0;
+    public Text scoreText;
 
     public void Buff(float health)
     {
@@ -30,5 +35,11 @@ public class CharacterStats : MonoBehaviour
     public void IsDead()
     {
         Destroy(gameObject);
+    }
+
+    public void IncrementScore(int scoreDelta)
+    {
+        score += scoreDelta;
+        scoreText.text = score.ToString();
     }
 }
