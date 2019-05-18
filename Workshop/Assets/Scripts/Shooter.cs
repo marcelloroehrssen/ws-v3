@@ -22,6 +22,7 @@ public class Shooter : MonoBehaviour
 
             GameObject proj = Instantiate(projectile);
             proj.transform.position = transform.position;
+            proj.transform.rotation = transform.rotation;
             proj.GetComponent<Rigidbody2D>().AddForce(
                 dir * projectileSpeed,
                 ForceMode2D.Impulse

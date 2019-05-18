@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     [Min(1)]
     public float seekingThreshold = 1f;
 
+    private bool isFacingLeft = false;
+
     public void Start()
     {
         target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
@@ -23,8 +25,23 @@ public class EnemyController : MonoBehaviour
         {
             Vector3 dir = target.position - transform.position;
             dir.Normalize();
+            
+            if (!isFacingLeft && transform.position.x > target.position.x)
+            {
+                isFacingLeft = true;
+                GetComponent<Animator>().transform.Rotate(0, 180, 0);
+            } else if (isFacingLeft && transform.position.x < target.position.x)
+            {
+                isFacingLeft = false;
+                GetComponent<Animator>().transform.Rotate(0, 180, 0);
+            }
+            dir.x = Mathf.Abs(dir.x);
 
+            GetComponent<Animator>().SetBool("IsWalking", true);
             transform.Translate(dir * speed * Time.deltaTime);
+        } else
+        {
+            GetComponent<Animator>().SetBool("IsWalking", false);
         }
     }
 }

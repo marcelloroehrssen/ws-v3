@@ -12,23 +12,30 @@ public class Controller : MonoBehaviour
     private bool isGrounded = true;
     private bool hasJumped = false;
     private Rigidbody2D rb2d;
+    private Animator animator;
 
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("IsWalkingLeft", false);
+        animator.SetBool("IsWalkingRight", false);
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
+            animator.SetBool("IsWalkingLeft", true);
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
+            animator.SetBool("IsWalkingRight", true);
         }
 
         if (!isGrounded && rb2d.velocity.y == 0 && hasJumped == false)
