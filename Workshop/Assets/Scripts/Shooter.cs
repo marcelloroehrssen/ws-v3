@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Shooter : MonoBehaviour
 {
     public GameObject projectile;
@@ -9,7 +10,14 @@ public class Shooter : MonoBehaviour
     public float projectileSpeed = 10f;
     [Range(1,20)]
     public int maxProjectile = 3;
-    
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void FixedUpdate()
     {
         int currentProjectile = GameObject.FindGameObjectsWithTag("Projectile").Length;
@@ -27,6 +35,7 @@ public class Shooter : MonoBehaviour
                 dir * projectileSpeed,
                 ForceMode2D.Impulse
             );
+            audioSource.Play();
         }
     }
 }

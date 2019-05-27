@@ -11,14 +11,19 @@ public class Controller : MonoBehaviour
 
     private bool isGrounded = true;
     private bool hasJumped = false;
+
     private Rigidbody2D rb2d;
     private Animator animator;
+    private AudioSource audioSourceJump;
+    private AudioSource audioSourceLand;
 
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSourceJump = GetComponents<AudioSource>()[2];
+        audioSourceLand = GetComponents<AudioSource>()[3];
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class Controller : MonoBehaviour
 
         if (!isGrounded && rb2d.velocity.y == 0 && hasJumped == false)
         {
+            audioSourceLand.Play();
             isGrounded = true;
         }
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
@@ -52,6 +58,7 @@ public class Controller : MonoBehaviour
     {
         if (hasJumped)
         {
+            audioSourceJump.Play();
             rb2d.AddForce(transform.up * speedJump);
             hasJumped = false;
             isGrounded = false;

@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
             dir.x = Mathf.Abs(dir.x);
 
             GetComponent<Animator>().SetBool("IsWalking", true);
+            Debug.Log(Time.deltaTime);
             transform.Translate(dir * speed * Time.deltaTime);
         } else
         {
