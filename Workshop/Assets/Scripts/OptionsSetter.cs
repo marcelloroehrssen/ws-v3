@@ -14,7 +14,7 @@ public class OptionsSetter : MonoBehaviour
 
     public void MuteMusic(bool mute)
     {
-        if (!mute)
+        if (mute)
         {
             mixer.SetFloat("MusicVolume", -80f);
         } else
@@ -25,7 +25,7 @@ public class OptionsSetter : MonoBehaviour
 
     public void MuteEffect(bool mute)
     {
-        if (!mute)
+        if (mute)
         {
             mixer.SetFloat("EffectVolume", -80f);
         }

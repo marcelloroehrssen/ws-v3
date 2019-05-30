@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public EnemyChooser chooser;
 
     public float spawnTime = 2f;
     public float buffCycle = 2f;
@@ -24,12 +24,15 @@ public class Spawner : MonoBehaviour
         {
             return;
         }
+        Debug.Log("Wave Destroied");
         if (spawnCycle % incrementCycle == 0)
         {
             enemyToSpawn++;
         }
+        Debug.Log($"Spawning {enemyToSpawn} enemy");
         for (int i = 0; i < enemyToSpawn; i++) {
-            GameObject go = Instantiate(enemy);
+            Debug.Log("Spawning Enemy");
+            GameObject go = Instantiate(chooser.Pick());
             go.transform.position = transform.position;
             if (spawnCycle % buffCycle == 0) {
                 if (go.GetComponent<CharacterStats>() != null)

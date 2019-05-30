@@ -30,6 +30,7 @@ public class Pauser : MonoBehaviour
 
     public void PauseToggle()
     {
+        Debug.Log("Press");
         currentlyPaused = !currentlyPaused;
         Time.timeScale = 1.0f - Time.timeScale;
         pauseAnimator.SetBool("Paused", currentlyPaused);
